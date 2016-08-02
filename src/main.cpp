@@ -10,13 +10,13 @@ Adafruit_PN532 nfc(PN532_IRQ, PN532_RESET);
 
 void setup(void) {
   Serial.begin(115200);
-  Serial.println("Hello!");
+  Serial.println("ISO14443A reader 0.0.1 OK");
 
   nfc.begin();
 
   uint32_t versiondata = nfc.getFirmwareVersion();
   if (!versiondata) {
-    Serial.print("Didn't find PN53x board");
+    Serial.println("Didn't find PN53x board");
     while (1); // halt
   }
 
