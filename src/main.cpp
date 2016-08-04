@@ -41,6 +41,7 @@ void setup(void) {
 
 void loop(void) {
   boolean success;
+  int i = 0;
   // Buffer to store the returned UID
   uint8_t uid[] = { 0, 0, 0, 0, 0, 0, 0 };
   // Length of the UID (4 or 7 bytes depending on ISO14443A card type)
@@ -64,7 +65,12 @@ void loop(void) {
     }
     Serial.println("");
 
-    delay(1000);
+    for (i = 0; i < 4; i += 1) {
+      delay(125);
+      digitalWrite(13, HIGH);
+      delay(125);
+      digitalWrite(13, LOW);
+    }
   }
   else {
     // PN532 probably timed out waiting for a card
